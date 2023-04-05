@@ -5,16 +5,19 @@ import Works from './sections/Works'
 import About from './sections/About'
 import Contact from './sections/Contact'
 import { NavProvider } from './context/NavContext'
+import SmoothScroller from './components/SmoothScroller'
 
 function App() {
 
   return (
     <NavProvider>
       <Navigation />
-      <LandingPage />
-      <Works />
-      <About />
-      <Contact />
+      <SmoothScroller>
+        <LandingPage />
+        <Works />
+        <About />
+        <Contact />
+      </SmoothScroller>
     </NavProvider>
   )
 }
