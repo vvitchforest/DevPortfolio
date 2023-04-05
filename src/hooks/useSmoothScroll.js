@@ -4,21 +4,20 @@ import { useSpring, useTransform } from 'framer-motion'
 export const useSmoothScroll = (ref) => {
 
   const [pageHeight, setPageHeight] = useState(null)
-  const [containerHeight, setContainerHeight] = useState(null)
 
   useEffect(() => {
-    const smoothScrollDiv = ref.current
-    setContainerHeight(smoothScrollDiv.getBoundingClientRect().height)
+    const smoothScroll = ref.current
+    setPageHeight(smoothScroll.getBoundingClientRect().height)
   }, [])
 
   useLayoutEffect(() => {
-    const smoothScrollDiv = ref.current
+    const smoothScroll = ref.current
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
         setPageHeight(entry.contentRect.height)
       }
     })
-    observer.observe(smoothScrollDiv)
+    observer.observe(smoothScroll)
     return () => observer.disconnect()
   }, [])
 
@@ -28,5 +27,5 @@ export const useSmoothScroll = (ref) => {
     return spring
   }
 
-  return { pageHeight, containerHeight, useScrollTransform }
+  return { pageHeight, useScrollTransform }
 }

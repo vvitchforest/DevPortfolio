@@ -29,8 +29,8 @@ const Contact = () => {
             mx={4}
             color='text'
             onClick={handleClick}
-            height={['2.5rem', '4rem']}
-            fontSize={['1.75rem', '3rem']}
+            height={['2.5rem', '3rem', '3rem', '4rem']}
+            fontSize={['1.5rem', '2.5rem', '2.5rem', '3.5rem']}
           >
             Send me an email
           </Button>
