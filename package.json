@@ -48,5 +48,6 @@
   },
   "devDependencies": {
     "web-vitals": "^3.0.3"
-  }
+  },
+  "homepage": "."
 }
