@@ -55,7 +55,7 @@ const Contact = () => {
             variant="link"
             size="lg"
             fontFamily="Syne, sans-serif"
-            fontSize="1.5rem"
+            fontSize={['1rem', '1.5rem', '1.5rem', '1.5rem']}
             mx={4}
             my={5}
           >

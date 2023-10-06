@@ -40,13 +40,13 @@ const typography = {
   textStyles: {
     display: {
       fontFamily: 'Syne, sans-serif',
-      fontSize: ['2rem', '3rem', '4rem', '5rem', '6rem'],
+      fontSize: ['2.5rem', '3rem', '4rem', '5rem', '6rem'],
       fontWeight: '800',
       lineHeight: '100%'
     },
     h1: {
       fontFamily: 'Syne, sans-serif',
-      fontSize: ['1rem', '1.5rem', '2rem', '2rem'],
+      fontSize: ['1.5rem', '1.5rem', '2rem', '2rem'],
       fontWeight: '600',
       textTransform: 'uppercase'
     },
@@ -57,7 +57,7 @@ const typography = {
     },
     subtitle1: {
       fontFamily: 'Syne, sans-serif',
-      fontSize: '2rem',
+      fontSize: ['1.75rem', '2'],
       fontWeight: '500'
     },
     subtitle2: {
@@ -75,7 +75,7 @@ const typography = {
     paragraph2: {
       fontFamily: 'Syne, sans-serif',
       fontWeight: '400',
-      fontSize: ['1rem', '1.75rem']
+      fontSize: ['1.5rem', '1.75rem']
     },
     brand: {
       fontFamily: 'Syne Tactile, cursive'
@@ -84,7 +84,7 @@ const typography = {
     buttonText: {
       fontFamily: 'Syne, sans-serif',
       fontWeight: '500',
-      fontSize: ['1rem', '1.25rem']
+      fontSize: '1.25rem'
     }
   }
 }

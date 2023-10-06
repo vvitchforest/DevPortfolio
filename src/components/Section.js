@@ -10,22 +10,23 @@ const Section = ({ heading, minHeight, children }) => {
   return (
     <Flex
       ref={ref}
-      w='100%'
+      w="100%"
       minH={minHeight}
-      direction='column'
-      align='center'
-      justify='flex-start'
+      direction="column"
+      align="center"
+      justify="flex-start"
       mb={['2rem', '2rem', '6rem', '6rem']}
       px={{ base: 1, lg: 3 }}
     >
       <Flex
         w={{ base: '100%', xl: '90%' }}
-        h='inherit' direction='column'
+        h="inherit"
+        direction="column"
         px={[2, 2, 5, 5]}
       >
-        <Divider mb={5}/>
+        <Divider mb={5} />
         <Text
-          textStyle='h1'
+          textStyle="h1"
           px={1}
           style={{
             transform: isInView ? 'none' : 'translateX(-200px)',
@@ -35,9 +36,7 @@ const Section = ({ heading, minHeight, children }) => {
         >
           {heading}
         </Text>
-        <Divider
-          mt={5}
-          mb={{ base: 1, lg: 5 }}/>
+        <Divider mt={5} mb={{ base: 1, lg: 5 }} />
         {children}
       </Flex>
     </Flex>

@@ -28,7 +28,7 @@ const LandingPage = () => {
         alignItems="center"
         m="auto"
       >
-        <Grid>
+        <Grid w="inherit">
           <GridItem
             colSpan={2}
             style={{
@@ -63,7 +63,7 @@ const LandingPage = () => {
             <Text textStyle="display">portfolio</Text>
           </GridItem>
           <GridItem
-            colSpan={1}
+            colSpan={{ base: 2, md: 1 }}
             alignSelf="end"
             ml="auto"
             style={{
@@ -79,43 +79,43 @@ const LandingPage = () => {
             </Text>
           </GridItem>
           <GridItem
-            colSpan={1}
+            colSpan={2}
             mt="6rem"
             style={{
               opacity: isInView ? 1 : 0,
               transition: 'all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1s'
             }}
           >
-            <Button
-              variant="ghost"
-              size="lg"
-              onClick={handleClick}
-              m={[5, 5, 0, 0]}
+            <Flex
+              flexDirection={{ base: 'column-reverse', md: 'row' }}
+              justifyContent="space-between"
             >
-              <BsArrowDown fontSize="2rem" />
-              <Text
-                fontFamily="Syne Tactile, cursive"
-                textTransform="lowercase"
-                fontSize="2rem"
+              <Button
+                variant="ghost"
+                size="lg"
+                onClick={handleClick}
+                my={[5, 5, 0, 0]}
+                alignSelf="flex-start"
+                pl={{ base: 0, md: 3 }}
               >
-                (see my work)
-              </Text>
-            </Button>
-          </GridItem>
-          <GridItem
-            colSpan={{ base: 2, md: 1 }}
-            mt="6rem"
-            style={{
-              opacity: isInView ? 1 : 0,
-              transition: 'all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1s'
-            }}
-          >
-            <Text textStyle="subtitle2" color="text" fontSize="1.25rem">
-              media engineering student &{' '}
-            </Text>
-            <Text textStyle="subtitle2" color="text" fontSize="1.25rem">
-              front-end developer{' '}
-            </Text>
+                <BsArrowDown fontSize="2rem" />
+                <Text
+                  fontFamily="Syne Tactile, cursive"
+                  textTransform="lowercase"
+                  fontSize="2rem"
+                >
+                  (see my work)
+                </Text>
+              </Button>
+              <Box>
+                <Text textStyle="subtitle2" color="text">
+                  media engineering student &
+                </Text>
+                <Text textStyle="subtitle2" color="text">
+                  front-end developer
+                </Text>
+              </Box>
+            </Flex>
           </GridItem>
         </Grid>
       </Flex>
