@@ -22,7 +22,7 @@ const LandingPage = () => {
   return (
     <Box id="landing-page-container" ref={homeRef} w="100%" h="95vh">
       <Flex
-        w="90%"
+        w={{ base: '90%', lg: '80%' }}
         height="90%"
         justifyContent="center"
         alignItems="center"
