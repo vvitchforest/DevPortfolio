@@ -20,7 +20,7 @@ const ChakraBox = chakra(motion.div, {
   shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
 })
 
-const Parallax = ({ children, intensity, target }) => {
+const Parallax = ({ children, intensity, target, width }) => {
 
   const { scrollYProgress } = useScroll( {
     target: target,
@@ -29,7 +29,7 @@ const Parallax = ({ children, intensity, target }) => {
   const y = useParallax(scrollYProgress, intensity)
 
   return(
-    <ChakraBox style={{ y }}>
+    <ChakraBox style={{ y }} w={width}>
       {children}
     </ChakraBox>
   )

@@ -31,8 +31,6 @@ const NavLink = ({ navLinkId, scrollToId, closeDrawer }) => {
   const linkStyle = activeNavLinkId === navLinkId
     ? {
       color: theme.colors.purple[400],
-      fontStyle: 'italic',
-      fontWeight:'600'
     } : {
       color: ''
     }

@@ -84,8 +84,9 @@ const Navigation = () => {
             onClick={scrollToTop}
             variant='ghost'
             color='text'
-            fontFamily='Playfair Display, serif'
-            fontWeight='bold'
+            textTransform='lowercase'
+            fontFamily='Syne Tactile, cursive'
+            fontWeight='500'
             fontSize='2rem'
             my={2}
             mr='auto'
@@ -93,7 +94,7 @@ const Navigation = () => {
             _hover={{ color: 'primary', bg: 'transparent' }}
             _active={{ bg: 'transparent' }}
           >
-            I.
+            I. (portfolio)
           </Button>
           <Stack
             direction='row'
@@ -112,7 +113,7 @@ const Navigation = () => {
           <IconButton
             onClick={toggleColorMode}
             aria-label={useColorModeValue('set dark mode', 'set light mode')}
-            icon={useColorModeValue(<MoonIcon fontSize='1.25rem'/>, <SunIcon fontSize='1.25rem'/>)}
+            icon={useColorModeValue(<MoonIcon fontSize='1.5rem'/>, <SunIcon fontSize='1.5rem'/>)}
             variant='ghost'
             color='text'
             my={2}

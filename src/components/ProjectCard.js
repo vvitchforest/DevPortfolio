@@ -9,135 +9,149 @@ import {
   Tag,
   Button,
   Box,
-  Flex,
   Link,
-  AspectRatio
+  AspectRatio,
+  VisuallyHidden,
+  Image
 } from '@chakra-ui/react'
 import { BsArrowRight } from 'react-icons/bs'
 
-const ProjectCard = ({
-  media,
-  title,
-  shortDesc,
-  source,
-  link,
-  description,
-  technologies,
-  index
-}) => {
-
+const ProjectCard = ({ project, index }) => {
   let mediaContent
 
-  const descriptionParagraphs = description
+  const descriptionParagraphs = project.description
     .split('/')
     .map((paragraph, index) => (
-      <Text key={index} textStyle='paragraph'>
+      <Text key={index} textStyle="paragraph1">
         {paragraph} <br></br>
       </Text>
     ))
 
   const cardStyles = {
-    overflow: 'hidden',
-    maxWidth: '100%',
-    mx:'auto',
     my: { base: 0, lg: 3 },
-    py: 3,
-    boxShadow:'none',
-    bg:'background',
+    py: 5,
+    boxShadow: 'none',
+    bg: 'background',
     borderRadius: '0'
   }
 
-  if (media.type === 'image') {
+  if (project.media.type === 'image') {
     mediaContent = (
       <Box
-        w={{ base: '100%', lg: '40%' }}
-        minH={['250px', '300px', '400px', 'auto']}
-        h={title.includes('My Restaurant') ? ['600px', '450px'] : 'auto'}
+        w={{ base: '100%', lg: '50%' }}
+        minH={
+          project.name.includes('My Restaurant')
+            ? ['600px', '450px']
+            : ['250px', '300px', '400px', 'auto']
+        }
+        mt={5}
         bgImage={{
-          base: `url('${media.content.full}')`,
-          lg: `url(${media.content.small})`,
-          xl: `url('${media.content.wide}')` }}
-        bgSize={title.includes('My Restaurant') ? 'contain' : 'cover'}
-        bgPosition={!title.includes('Mediaday') && 'center'}
-        bgRepeat='no-repeat'
-        boxSizing='border-box'
-      ></Box>
+          base: `url('${project.media.content.full}')`,
+          lg: `url('${project.media.content.wide}')`
+        }}
+        bgSize={{
+          base: project.name.includes('My Restaurant') ? 'contain' : 'cover',
+          lg: 'contain'
+        }}
+        bgPosition={{ base: 'center', lg: 'top' }}
+        bgRepeat="no-repeat"
+        boxSizing="border-box"
+      >
+        <VisuallyHidden>
+          {' '}
+          <Image alt={project.media.alt} src={project.media.content.full} />
+        </VisuallyHidden>
+      </Box>
     )
-  } else if (media.type === 'video') {
+  } else if (project.media.type === 'video') {
     mediaContent = (
-      <Flex w={{ base: '100%', lg: '50%' }} justify="center">
+      <Box w={{ base: '100%', lg: '50%' }} justify="center" mt={5}>
         <AspectRatio
-          w={{ base: '100%', lg: '560px' }}
+          w={{ base: '100%', lg: '80%' }}
           ratio={1}
           title="VR Nature Museum"
+          mx="auto"
         >
-          <iframe src={media.content} allowFullScreen />
+          <iframe src={project.media.content} allowFullScreen />
         </AspectRatio>
-      </Flex>
+      </Box>
     )
   }
 
   return (
     <Card
-      variant='filled'
+      variant="filled"
+      overflow="hidden"
       direction={{
-        base: 'column',
+        base: 'column-reverse',
         lg: index % 2 === 0 ? 'row' : 'row-reverse'
       }}
       sx={cardStyles}
     >
-      <CardHeader display={['block', 'block', 'block', 'none']} pl={1} pt={0}>
-        <Text textStyle='h2' pb={1}>
-          {title}
-        </Text>
-        <Text textStyle='secondaryDescription'>
-          {shortDesc}
-        </Text>
-      </CardHeader>
       {mediaContent}
-      <Stack w={{ base: '100%', lg: '60%' }} >
-        <CardHeader display={['none', 'none', 'none', 'block']} py={0} pl={{ base: 1, lg: index % 2 === 0 ? 5 : 0 }}>
-          <Text textStyle='h2'>
-            {title}
+      <Stack
+        w={{ base: '100%', lg: '50%' }}
+        pr={{ base: 1, lg: index % 2 === 0 ? 0 : 5 }}
+        pl={{ base: 1, lg: index % 2 === 0 ? 5 : 0 }}
+      >
+        <CardHeader p={0} my={0}>
+          <Text
+            textStyle="h2"
+            _before={{
+              content: `'0${index + 1} '`,
+              fontFamily: 'Syne Tactile, cursive',
+              fontSize: ['1.5rem', '2rem', '2.5rem', '3rem']
+            }}
+          >
+            {project.name}
           </Text>
-          <Text textStyle='secondaryDescription'>
-            {shortDesc}
+          <Text textStyle="subtitle2" mt={[0, -2]} mb={3}>
+            {project.shortDesc}
           </Text>
         </CardHeader>
-        <CardBody pl={{ base: 1, lg: index % 2 === 0 ? 5 : 0 }} pt={3}>
-          <Stack>
-            {descriptionParagraphs}
-            {!title.includes('VR Nature Museum') && (
+        <CardBody p={0}>
+          <Stack>{descriptionParagraphs}</Stack>
+          {!project.name.includes('Nature Museum') && (
+            <Stack>
               <Button
                 as={Link}
-                href={source}
+                href={project.source}
                 isExternal
-                variant='link'
-                alignSelf='flex-start'
-                fontSize='1.125rem'
-                pt={3}
+                variant="link"
+                alignSelf="flex-start"
+                my={5}
+                size="lg"
               >
                 Source code
               </Button>
-            )}
-          </Stack>
-          {!title.includes('VR Nature Museum') && (
-            <Button
-              as={Link}
-              href={link}
-              isExternal
-              variant='outline'
-              my={5}
-            >
-              <Text mr={2}>Visit website</Text>
-              <BsArrowRight size="25px" />
-            </Button>
+              <Button
+                leftIcon={<BsArrowRight />}
+                as={Link}
+                href={project.link}
+                isExternal
+                variant="outline"
+                alignSelf="flex-start"
+                mt={5}
+                size="lg"
+              >
+                Visit website
+              </Button>
+            </Stack>
           )}
         </CardBody>
-        <CardFooter pb={0} pl={{ base: 1, lg: index % 2 === 0 ? 5 : 0 }}>
-          <Stack direction='row'>
-            {technologies.map((item, index) => (
-              <Tag key={index} size='lg' borderRadius='full' fontSize='1rem'>
+        <CardFooter px={0} py={5} my={5} display="flex" flexDir="column">
+          <Text textStyle="subtitle2" mb={3}>
+            Technologies
+          </Text>
+          <Stack direction="row">
+            {project.technologies.map((item, index) => (
+              <Tag
+                key={index}
+                size="md"
+                borderRadius="full"
+                textStyle="paragraph1"
+                fontSize="1rem"
+              >
                 {item}
               </Tag>
             ))}
@@ -149,13 +163,7 @@ const ProjectCard = ({
 }
 
 ProjectCard.propTypes = {
-  media: PropTypes.object,
-  title: PropTypes.string,
-  date: PropTypes.string,
-  source: PropTypes.string,
-  link: PropTypes.string,
-  description: PropTypes.string,
-  technologies: PropTypes.array,
+  project: PropTypes.object,
   index: PropTypes.number
 }
 

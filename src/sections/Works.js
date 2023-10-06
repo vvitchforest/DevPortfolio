@@ -13,13 +13,7 @@ const Works = () => {
           {Projects.map((project, index) => (
             <Box key={project.name}>
               <ProjectCard
-                media={project.media}
-                title={project.name}
-                shortDesc={project.shortDesc}
-                source={project.source}
-                link={project.link}
-                description={project.description}
-                technologies={project.technologies}
+                project={project}
                 index={index}
               />
               {index !== Projects.length -1 &&
