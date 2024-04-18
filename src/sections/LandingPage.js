@@ -1,7 +1,38 @@
-import { Box, Flex, Text, Grid, GridItem, Button } from '@chakra-ui/react'
+import { useEffect } from 'react'
+import {
+  Box,
+  Flex,
+  Text,
+  Grid,
+  GridItem,
+  Button,
+  chakra,
+  shouldForwardProp,
+  useColorMode
+} from '@chakra-ui/react'
 import { useNav } from '../hooks/useNav'
-import { useInView } from 'framer-motion'
+import {
+  useInView,
+  motion,
+  isValidMotionProp,
+  useMotionTemplate,
+  useMotionValue,
+  animate
+} from 'framer-motion'
 import { BsArrowDown } from 'react-icons/bs'
+
+/** Allow motion props and non-Chakra props to be forwarded.*/
+const ChakraBox = chakra(motion.div, {
+  shouldForwardProp: (prop) =>
+    isValidMotionProp(prop) || shouldForwardProp(prop)
+})
+
+const ChakraButton = chakra(motion.button, {
+  shouldForwardProp: (prop) =>
+    isValidMotionProp(prop) || shouldForwardProp(prop)
+})
+
+const COLORS = ['#13FFAA', '#1E67C6', '#8D00C4']
 
 const LandingPage = () => {
   const homeRef = useNav('home')
@@ -19,8 +50,33 @@ const LandingPage = () => {
     })
   }
 
+  const mode = useColorMode()
+  const color = useMotionValue(COLORS[0])
+  const backgroundImage =
+    mode.colorMode === 'light'
+      ? useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #EDF2F7 40%, ${color})`
+      : useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #1A1A1A 40%, ${color})`
+  const border = useMotionTemplate`2px solid ${color}`
+  console.log('mode', mode)
+
+  useEffect(() => {
+    animate(color, COLORS, {
+      ease: 'easeInOut',
+      duration: 10,
+      repeat: Infinity,
+      // eslint-disable-next-line quotes
+      repeatType: 'mirror'
+    })
+  }, [])
+
   return (
-    <Box id="landing-page-container" ref={homeRef} w="100%" h="95vh">
+    <ChakraBox
+      id="landing-page-container"
+      ref={homeRef}
+      w="100%"
+      h="95vh"
+      style={{ backgroundImage }}
+    >
       <Flex
         w={{ base: '90%', lg: '80%' }}
         height="90%"
@@ -75,7 +131,7 @@ const LandingPage = () => {
               fontSize={['2rem', '3rem']}
               fontFamily="Syne Tactile, cursive"
             >
-              (2023)
+              (2024)
             </Text>
           </GridItem>
           <GridItem
@@ -90,36 +146,46 @@ const LandingPage = () => {
               flexDirection={{ base: 'column-reverse', md: 'row' }}
               justifyContent="space-between"
             >
-              <Button
-                variant="ghost"
+              <ChakraButton
                 size="lg"
                 onClick={handleClick}
                 my={[5, 5, 0, 0]}
                 alignSelf="flex-start"
-                pl={{ base: 0, md: 3 }}
+                //pl={{ base: 0, md: 3 }}
+                px={4}
+                py={2}
+                style={{ border }}
+                display="flex"
+                alignItems="center"
+                borderRadius="full"
+                whileHover={{ scale: 1.015 }}
+                whileTap={{ scale: 0.985 }}
               >
-                <BsArrowDown fontSize="2rem" />
+                <BsArrowDown fontSize="1.5rem" />
                 <Text
                   fontFamily="Syne Tactile, cursive"
                   textTransform="lowercase"
-                  fontSize="2rem"
+                  fontSize="1.5rem"
                 >
                   (see my work)
                 </Text>
-              </Button>
+              </ChakraButton>
               <Box>
                 <Text textStyle="subtitle2" color="text">
-                  media engineering student &
+                  media engineering student |
                 </Text>
                 <Text textStyle="subtitle2" color="text">
-                  front-end developer
+                  front-end developer |
+                </Text>
+                <Text textStyle="subtitle2" color="text">
+                  UX/UI designer
                 </Text>
               </Box>
             </Flex>
           </GridItem>
         </Grid>
       </Flex>
-    </Box>
+    </ChakraBox>
   )
 }
 

@@ -19,7 +19,7 @@ const designTokens = {
         _dark: 'gray.500'
       },
       background: {
-        default: 'gray.50',
+        default: 'gray.100',
         _dark: '#1A1A1A'
       },
       error: 'red.500',
@@ -57,7 +57,7 @@ const typography = {
     },
     subtitle1: {
       fontFamily: 'Syne, sans-serif',
-      fontSize: ['1.75rem', '2'],
+      fontSize: ['1.75rem', '2rem'],
       fontWeight: '500'
     },
     subtitle2: {
