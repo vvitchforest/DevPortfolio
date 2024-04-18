@@ -65,16 +65,15 @@ const ProjectCard = ({ project, index }) => {
     )
   } else if (project.media.type === 'video') {
     mediaContent = (
-      <Box w={{ base: '100%', lg: '50%' }} justify="center" mt={5}>
-        <AspectRatio
-          w={{ base: '100%', lg: '80%' }}
-          ratio={1}
-          title="VR Nature Museum"
-          mx="auto"
-        >
-          <iframe src={project.media.content} allowFullScreen />
-        </AspectRatio>
-      </Box>
+      <AspectRatio
+        w={{ base: '100%', lg: '50%' }}
+        maxW="560px"
+        ratio={1}
+        title="VR Nature Museum"
+        mx="auto"
+      >
+        <iframe src={project.media.content} allowFullScreen />
+      </AspectRatio>
     )
   }
 
