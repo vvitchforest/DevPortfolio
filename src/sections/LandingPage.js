@@ -32,7 +32,7 @@ const ChakraButton = chakra(motion.button, {
     isValidMotionProp(prop) || shouldForwardProp(prop)
 })
 
-const COLORS = ['#13FFAA', '#1E67C6', '#8D00C4']
+const COLORS = ['#4d47a3', '#1E67C6', '#13FFAA']
 
 const LandingPage = () => {
   const homeRef = useNav('home')
@@ -54,8 +54,8 @@ const LandingPage = () => {
   const color = useMotionValue(COLORS[0])
   const backgroundImage =
     mode.colorMode === 'light'
-      ? useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #EDF2F7 40%, ${color})`
-      : useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #1A1A1A 40%, ${color})`
+      ? useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #FAF5FF 40%, ${color})`
+      : useMotionTemplate`radial-gradient(125% 125% at 50% 0%, #000005 40%, ${color})`
   const border = useMotionTemplate`2px solid ${color}`
   console.log('mode', mode)
 
@@ -136,7 +136,7 @@ const LandingPage = () => {
           </GridItem>
           <GridItem
             colSpan={2}
-            mt="6rem"
+            mt={{ base: '2rem', md: '6rem' }}
             style={{
               opacity: isInView ? 1 : 0,
               transition: 'all 1.3s cubic-bezier(0.17, 0.55, 0.55, 1) 1s'

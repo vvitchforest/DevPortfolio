@@ -48,7 +48,13 @@ const About = () => {
                 {skill.title}
               </Text>
               {skill.technologies.map((technology, index) => (
-                <Tag key={index} borderRadius="full" size="lg" m={1}>
+                <Tag
+                  key={index}
+                  borderRadius="full"
+                  size="lg"
+                  m={1}
+                  colorScheme="purple"
+                >
                   {technology}
                 </Tag>
               ))}

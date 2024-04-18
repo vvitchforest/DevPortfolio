@@ -69,10 +69,11 @@ const ProjectCard = ({ project, index }) => {
         w={{ base: '100%', lg: '50%' }}
         maxW="560px"
         ratio={1}
-        title="VR Nature Museum"
         mx="auto"
       >
-        <iframe src={project.media.content} allowFullScreen />
+        <video controls autoPlay>
+          <source src={project.media.content.full} type="video/mp4"></source>
+        </video>
       </AspectRatio>
     )
   }
@@ -150,6 +151,7 @@ const ProjectCard = ({ project, index }) => {
                 borderRadius="full"
                 textStyle="paragraph1"
                 fontSize="1rem"
+                colorScheme="purple"
               >
                 {item}
               </Tag>

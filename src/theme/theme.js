@@ -19,8 +19,8 @@ const designTokens = {
         _dark: 'gray.500'
       },
       background: {
-        default: 'gray.100',
-        _dark: '#1A1A1A'
+        default: 'purple.50',
+        _dark: '#000005'
       },
       error: 'red.500',
       success: 'green.500',
