@@ -11,10 +11,11 @@ const About = () => {
       <Highlight
         query={[
           'media engineering',
-          'creating things for the web',
-          'front-end development',
+          'creating',
+          'things for the web',
+          'web development',
           'UI design',
-          '3D modelling',
+          '3D technologies',
           '360° media'
         ]}
         styles={{ fontFamily: 'Syne Tactile, cursive', color: 'primary' }}

@@ -175,7 +175,7 @@ const LandingPage = () => {
                   media engineering student |
                 </Text>
                 <Text textStyle="subtitle2" color="text">
-                  front-end developer |
+                  web developer |
                 </Text>
                 <Text textStyle="subtitle2" color="text">
                   UX/UI designer
