@@ -97,6 +97,8 @@ const ProjectCard = ({ project, index }) => {
         <CardHeader p={0} my={0}>
           <Text
             textStyle="h2"
+            lineHeight="1"
+            pb={{ base: 4, lg: 6 }}
             _before={{
               content: `'0${index + 1} '`,
               fontFamily: 'Syne Tactile, cursive',
@@ -111,33 +113,35 @@ const ProjectCard = ({ project, index }) => {
         </CardHeader>
         <CardBody p={0}>
           <Stack>{descriptionParagraphs}</Stack>
-          {!project.name.includes('Nature Museum') && (
-            <Stack>
-              <Button
-                as={Link}
-                href={project.source}
-                isExternal
-                variant="link"
-                alignSelf="flex-start"
-                my={5}
-                size="lg"
-              >
-                Source code
-              </Button>
-              <Button
-                leftIcon={<BsArrowRight />}
-                as={Link}
-                href={project.link}
-                isExternal
-                variant="outline"
-                alignSelf="flex-start"
-                mt={5}
-                size="lg"
-              >
-                Visit website
-              </Button>
-            </Stack>
-          )}
+          {!project.name.includes('Nature Museum') ||
+            !project.source ||
+            (!project.link && (
+              <Stack>
+                <Button
+                  as={Link}
+                  href={project.source}
+                  isExternal
+                  variant="link"
+                  alignSelf="flex-start"
+                  my={5}
+                  size="lg"
+                >
+                  Source code
+                </Button>
+                <Button
+                  leftIcon={<BsArrowRight />}
+                  as={Link}
+                  href={project.link}
+                  isExternal
+                  variant="outline"
+                  alignSelf="flex-start"
+                  mt={5}
+                  size="lg"
+                >
+                  Visit website
+                </Button>
+              </Stack>
+            ))}
         </CardBody>
         <CardFooter px={0} py={5} my={5} display="flex" flexDir="column">
           <Text textStyle="subtitle2" mb={3}>

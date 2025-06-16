@@ -20,6 +20,7 @@ import {
   animate
 } from 'framer-motion'
 import { BsArrowDown } from 'react-icons/bs'
+import Marquee from '../components/marquee'
 
 /** Allow motion props and non-Chakra props to be forwarded.*/
 const ChakraBox = chakra(motion.div, {
@@ -131,7 +132,7 @@ const LandingPage = () => {
               fontSize={['2rem', '3rem']}
               fontFamily="Syne Tactile, cursive"
             >
-              (2024)
+              (2025)
             </Text>
           </GridItem>
           <GridItem
@@ -172,19 +173,20 @@ const LandingPage = () => {
               </ChakraButton>
               <Box>
                 <Text textStyle="subtitle2" color="text">
-                  media engineering student |
+                  Web developer with a focus on front-end and 3D technologies
                 </Text>
-                <Text textStyle="subtitle2" color="text">
+                {/* <Text textStyle="subtitle2" color="text">
                   web developer |
                 </Text>
                 <Text textStyle="subtitle2" color="text">
                   UX/UI designer
-                </Text>
+                </Text> */}
               </Box>
             </Flex>
           </GridItem>
         </Grid>
       </Flex>
+      <Marquee />
     </ChakraBox>
   )
 }

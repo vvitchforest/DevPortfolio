@@ -9,15 +9,7 @@ const About = () => {
   const text = data.description.split('/').map((paragraph, index) => (
     <Text key={index} textStyle="paragraph2">
       <Highlight
-        query={[
-          'media engineering',
-          'creating',
-          'things for the web',
-          'web development',
-          'UI design',
-          '3D technologies',
-          '360° media'
-        ]}
+        query={['Irina', 'front-end', 'web 3D', '360° media']}
         styles={{ fontFamily: 'Syne Tactile, cursive', color: 'primary' }}
       >
         {paragraph}
