@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/DevPortfolio/static/css/main.b3b91dd4.css",
+    "main.js": "/DevPortfolio/static/js/main.efb8b4ab.js",
+    "static/js/496.2b199f00.chunk.js": "/DevPortfolio/static/js/496.2b199f00.chunk.js",
+    "static/media/VRnatureMuseum.mp4": "/DevPortfolio/static/media/VRnatureMuseum.635e42becdd23ba7e10f.mp4",
+    "static/media/mediaday-full.png": "/DevPortfolio/static/media/mediaday-full.cecb4e06c8cac0f95222.png",
+    "static/media/media-services-full.png": "/DevPortfolio/static/media/media-services-full.5ce3216e9c98005bd991.png",
+    "static/media/media-services-wide.png": "/DevPortfolio/static/media/media-services-wide.6ba92925ed6b3adb377b.png",
+    "static/media/stabilisation-point.PNG": "/DevPortfolio/static/media/stabilisation-point.01af01f332b5a0658d38.PNG",
+    "static/media/city-data.PNG": "/DevPortfolio/static/media/city-data.ed7d3222f0f83e19a058.PNG",
+    "static/media/mediaday-wide.png": "/DevPortfolio/static/media/mediaday-wide.20522770cd256701da72.png",
+    "static/media/media-services-small.png": "/DevPortfolio/static/media/media-services-small.0e2deeb6bac6674edc45.png",
+    "static/media/mediaday-small.png": "/DevPortfolio/static/media/mediaday-small.3ded0ed7406d6e7b527d.png",
+    "static/media/my-restaurant2.png": "/DevPortfolio/static/media/my-restaurant2.52d0c6865bedcd8a4e04.png",
+    "index.html": "/DevPortfolio/index.html",
+    "main.b3b91dd4.css.map": "/DevPortfolio/static/css/main.b3b91dd4.css.map",
+    "main.efb8b4ab.js.map": "/DevPortfolio/static/js/main.efb8b4ab.js.map",
+    "496.2b199f00.chunk.js.map": "/DevPortfolio/static/js/496.2b199f00.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b3b91dd4.css",
+    "static/js/main.efb8b4ab.js"
+  ]
+}
