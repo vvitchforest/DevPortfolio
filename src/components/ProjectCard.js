@@ -15,6 +15,7 @@ import {
   Image
 } from '@chakra-ui/react'
 import { BsArrowRight } from 'react-icons/bs'
+import ImageCarousel from './ImageCarousel'
 
 const ProjectCard = ({ project, index }) => {
   let mediaContent
@@ -27,9 +28,11 @@ const ProjectCard = ({ project, index }) => {
       </Text>
     ))
 
+  const isCarousel = project.media.type === 'carousel'
+
   const cardStyles = {
     my: { base: 0, lg: 3 },
-    py: 5,
+    py: isCarousel ? { base: 0, lg: 5 } : 5,
     boxShadow: 'none',
     bg: 'background',
     borderRadius: '0'
@@ -41,7 +44,7 @@ const ProjectCard = ({ project, index }) => {
         w={{ base: '100%', lg: '50%' }}
         minH={
           project.name.includes('My Restaurant')
-            ? ['600px', '450px']
+            ? { base: '100vh', md: '60vh', lg: '450px' }
             : ['250px', '300px', '400px', 'auto']
         }
         mt={5}
@@ -63,6 +66,21 @@ const ProjectCard = ({ project, index }) => {
         </VisuallyHidden>
       </Box>
     )
+  } else if (project.media.type === 'carousel') {
+    mediaContent = (
+      <Box
+        w={{ base: '100vw', lg: '50%' }}
+        ml={{ base: 'calc(50% - 50vw)', lg: 0 }}
+        h={{ base: '100vh', md: '60vh', lg: '450px' }}
+        mt={{ base: 0, lg: 5 }}
+        position="relative"
+      >
+        <ImageCarousel
+          images={project.media.content}
+          alt={project.media.alt}
+        />
+      </Box>
+    )
   } else if (project.media.type === 'video') {
     mediaContent = (
       <AspectRatio
@@ -81,7 +99,7 @@ const ProjectCard = ({ project, index }) => {
   return (
     <Card
       variant="filled"
-      overflow="hidden"
+      overflow={{ base: isCarousel ? 'visible' : 'hidden', lg: 'hidden' }}
       direction={{
         base: 'column-reverse',
         lg: index % 2 === 0 ? 'row' : 'row-reverse'
@@ -113,21 +131,21 @@ const ProjectCard = ({ project, index }) => {
         </CardHeader>
         <CardBody p={0}>
           <Stack>{descriptionParagraphs}</Stack>
-          {!project.name.includes('Nature Museum') ||
-            !project.source ||
-            (!project.link && (
-              <Stack>
+          {(project.source || project.link) && (
+            <Stack mt={5}>
+              {project.source && (
                 <Button
                   as={Link}
                   href={project.source}
                   isExternal
                   variant="link"
                   alignSelf="flex-start"
-                  my={5}
                   size="lg"
                 >
                   Source code
                 </Button>
+              )}
+              {project.link && (
                 <Button
                   leftIcon={<BsArrowRight />}
                   as={Link}
@@ -140,8 +158,9 @@ const ProjectCard = ({ project, index }) => {
                 >
                   Visit website
                 </Button>
-              </Stack>
-            ))}
+              )}
+            </Stack>
+          )}
         </CardBody>
         <CardFooter px={0} py={5} my={5} display="flex" flexDir="column">
           <Text textStyle="subtitle2" mb={3}>
