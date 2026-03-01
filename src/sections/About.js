@@ -46,7 +46,7 @@ const About = () => {
                   borderRadius="full"
                   size="lg"
                   m={1}
-                  colorScheme="purple"
+                  colorScheme="blue"
                 >
                   {technology}
                 </Tag>

@@ -73,12 +73,12 @@ const LandingPage = () => {
       id='landing-page-container'
       ref={homeRef}
       w='100%'
-      h='95vh'
+      h='100vh'
       style={{ backgroundImage }}
     >
       <Flex
         w={{ base: '90%', lg: '80%' }}
-        height='90%'
+        height='100%'
         justifyContent='center'
         alignItems='center'
         m='auto'

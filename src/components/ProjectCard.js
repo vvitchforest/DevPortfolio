@@ -12,7 +12,7 @@ import {
   Link,
   AspectRatio,
   VisuallyHidden,
-  Image
+  Image,
 } from '@chakra-ui/react'
 import { BsArrowRight } from 'react-icons/bs'
 import ImageCarousel from './ImageCarousel'
@@ -23,7 +23,7 @@ const ProjectCard = ({ project, index }) => {
   const descriptionParagraphs = project.description
     .split('/')
     .map((paragraph, index) => (
-      <Text key={index} textStyle="paragraph1">
+      <Text key={index} textStyle='paragraph1'>
         {paragraph} <br></br>
       </Text>
     ))
@@ -35,7 +35,7 @@ const ProjectCard = ({ project, index }) => {
     py: isCarousel ? { base: 0, lg: 5 } : 5,
     boxShadow: 'none',
     bg: 'background',
-    borderRadius: '0'
+    borderRadius: '0',
   }
 
   if (project.media.type === 'image') {
@@ -50,15 +50,15 @@ const ProjectCard = ({ project, index }) => {
         mt={5}
         bgImage={{
           base: `url('${project.media.content.full}')`,
-          lg: `url('${project.media.content.wide}')`
+          lg: `url('${project.media.content.wide}')`,
         }}
         bgSize={{
           base: project.name.includes('My Restaurant') ? 'contain' : 'cover',
-          lg: 'contain'
+          lg: 'contain',
         }}
         bgPosition={{ base: 'center', lg: 'top' }}
-        bgRepeat="no-repeat"
-        boxSizing="border-box"
+        bgRepeat='no-repeat'
+        boxSizing='border-box'
       >
         <VisuallyHidden>
           {' '}
@@ -73,24 +73,21 @@ const ProjectCard = ({ project, index }) => {
         ml={{ base: 'calc(50% - 50vw)', lg: 0 }}
         h={{ base: '100vh', md: '60vh', lg: '450px' }}
         mt={{ base: 0, lg: 5 }}
-        position="relative"
+        position='relative'
       >
-        <ImageCarousel
-          images={project.media.content}
-          alt={project.media.alt}
-        />
+        <ImageCarousel images={project.media.content} alt={project.media.alt} />
       </Box>
     )
   } else if (project.media.type === 'video') {
     mediaContent = (
       <AspectRatio
         w={{ base: '100%', lg: '50%' }}
-        maxW="560px"
+        maxW='560px'
         ratio={1}
-        mx="auto"
+        mx='auto'
       >
         <video controls autoPlay>
-          <source src={project.media.content.full} type="video/mp4"></source>
+          <source src={project.media.content.full} type='video/mp4'></source>
         </video>
       </AspectRatio>
     )
@@ -98,11 +95,11 @@ const ProjectCard = ({ project, index }) => {
 
   return (
     <Card
-      variant="filled"
+      variant='filled'
       overflow={{ base: isCarousel ? 'visible' : 'hidden', lg: 'hidden' }}
       direction={{
         base: 'column-reverse',
-        lg: index % 2 === 0 ? 'row' : 'row-reverse'
+        lg: index % 2 === 0 ? 'row' : 'row-reverse',
       }}
       sx={cardStyles}
     >
@@ -114,33 +111,33 @@ const ProjectCard = ({ project, index }) => {
       >
         <CardHeader p={0} my={0}>
           <Text
-            textStyle="h2"
-            lineHeight="1"
+            textStyle='h2'
+            lineHeight='1'
             pb={{ base: 4, lg: 6 }}
             _before={{
               content: `'0${index + 1} '`,
               fontFamily: 'Syne Tactile, cursive',
-              fontSize: ['1.5rem', '2rem', '2.5rem', '3rem']
+              fontSize: ['1.5rem', '2rem', '2.5rem', '3rem'],
             }}
           >
             {project.name}
           </Text>
-          <Text textStyle="subtitle2" mt={[0, -2]} mb={3}>
+          <Text textStyle='subtitle2' mt={[0, -2]} mb={3}>
             {project.shortDesc}
           </Text>
         </CardHeader>
         <CardBody p={0}>
           <Stack>{descriptionParagraphs}</Stack>
           {(project.source || project.link) && (
-            <Stack mt={5}>
+            <Stack mt={5} gap={5}>
               {project.source && (
                 <Button
                   as={Link}
                   href={project.source}
                   isExternal
-                  variant="link"
-                  alignSelf="flex-start"
-                  size="lg"
+                  variant='link'
+                  alignSelf='flex-start'
+                  size='lg'
                 >
                   Source code
                 </Button>
@@ -151,10 +148,9 @@ const ProjectCard = ({ project, index }) => {
                   as={Link}
                   href={project.link}
                   isExternal
-                  variant="outline"
-                  alignSelf="flex-start"
-                  mt={5}
-                  size="lg"
+                  variant='outline'
+                  alignSelf='flex-start'
+                  size='lg'
                 >
                   Visit website
                 </Button>
@@ -162,19 +158,16 @@ const ProjectCard = ({ project, index }) => {
             </Stack>
           )}
         </CardBody>
-        <CardFooter px={0} py={5} my={5} display="flex" flexDir="column">
-          <Text textStyle="subtitle2" mb={3}>
-            Technologies
-          </Text>
-          <Stack direction="row">
+        <CardFooter px={0} py={5} my={5} display='flex' flexDir='column'>
+          <Stack direction='row'>
             {project.technologies.map((item, index) => (
               <Tag
                 key={index}
-                size="md"
-                borderRadius="full"
-                textStyle="paragraph1"
-                fontSize="1rem"
-                colorScheme="purple"
+                size='md'
+                borderRadius='full'
+                textStyle='paragraph1'
+                fontSize='1rem'
+                colorScheme='blue'
               >
                 {item}
               </Tag>
@@ -188,7 +181,7 @@ const ProjectCard = ({ project, index }) => {
 
 ProjectCard.propTypes = {
   project: PropTypes.object,
-  index: PropTypes.number
+  index: PropTypes.number,
 }
 
 export default ProjectCard

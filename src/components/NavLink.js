@@ -30,7 +30,7 @@ const NavLink = ({ navLinkId, scrollToId, closeDrawer }) => {
 
   const linkStyle = activeNavLinkId === navLinkId
     ? {
-      color: theme.colors.purple[400],
+      color: theme.colors.blue[300],
     } : {
       color: ''
     }
@@ -40,7 +40,7 @@ const NavLink = ({ navLinkId, scrollToId, closeDrawer }) => {
       bg: 'transparent',
       textDecoration: 'none'
     } : {
-      bg: useColorModeValue(theme.colors.gray[100], theme.colors.whiteAlpha[200]),
+      bg: useColorModeValue(theme.colors.blue[50], theme.colors.whiteAlpha[200]),
       textDecoration: 'none'
     }
 

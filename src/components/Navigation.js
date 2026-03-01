@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react'
 import {
   useColorMode,
   Container,
@@ -14,13 +13,11 @@ import {
   useDisclosure
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon, HamburgerIcon } from '@chakra-ui/icons'
-import { useState } from 'react'
 import NavLink from '../components/NavLink'
 
 const Navigation = () => {
   const { toggleColorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  const [position, setPosition] = useState({ position: 'relative' })
 
   const navLinks = [
     { navLinkId: 'projects', scrollToId: 'works-container' },
@@ -28,42 +25,13 @@ const Navigation = () => {
     { navLinkId: 'contact', scrollToId: 'contact-container' }
   ]
 
-  const navbarStyles = {
-    width: '100%',
-    backgroundColor: useColorModeValue('whiteAlpha.100', 'blackAlpha.100'),
-    backdropFilter: 'saturate(180%) blur(20px)',
-    zIndex: 10,
-    borderBottom: '1px solid',
-    borderColor: useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
-  }
-
-  const navbarScrollStyle = {
-    position: '-webkit-sticky',
-    // eslint-disable-next-line no-dupe-keys
-    position: 'sticky',
-    top: '0',
-    animation: 'slide-in 500ms'
-  }
+  const navBg = useColorModeValue('rgba(255,255,255,0.55)', 'rgba(0,0,5,0.55)')
+  const navBorderColor = useColorModeValue('blackAlpha.200', 'whiteAlpha.200')
 
   const drawerStyles = {
-    backgroundColor: useColorModeValue('whiteAlpha.700', 'blackAlpha.700'),
-    backdropFilter: 'saturate(180%) blur(30px)'
-  }
-
-  useEffect(() => {
-    window.addEventListener('scroll', navbarFixedTop)
-    return () => {
-      window.removeEventListener('scroll', navbarFixedTop)
-    }
-  }, [scroll])
-
-  const navbarFixedTop = () => {
-    const windowHeight = window.scrollY
-    if (window !== undefined) {
-      windowHeight > 50
-        ? setPosition(navbarScrollStyle)
-        : setPosition({ position: 'relative' })
-    }
+    backgroundColor: useColorModeValue('rgba(255,255,255,0.85)', 'rgba(0,0,5,0.85)'),
+    backdropFilter: 'saturate(180%) blur(30px)',
+    WebkitBackdropFilter: 'saturate(180%) blur(30px)'
   }
 
   const scrollToTop = () => {
@@ -75,12 +43,32 @@ const Navigation = () => {
 
   return (
     <>
-      <Box as="nav" sx={navbarStyles} style={position}>
+      <Box
+        as="nav"
+        position="fixed"
+        top={{ base: '8px', md: '12px' }}
+        left={0}
+        right={0}
+        px={{ base: 3, md: 5 }}
+        zIndex={100}
+        bg="transparent"
+        pointerEvents="none"
+      >
         <Container
-          maxWidth={{ base: '100%', xl: '90%' }}
+          maxWidth={{ base: '100%', xl: '85%' }}
           display="flex"
           justifyContent="flex-end"
           alignItems="center"
+          bg={navBg}
+          sx={{
+            backdropFilter: 'saturate(180%) blur(20px)',
+            WebkitBackdropFilter: 'saturate(180%) blur(20px)',
+          }}
+          borderRadius="full"
+          border="1px solid"
+          borderColor={navBorderColor}
+          px={5}
+          pointerEvents="auto"
         >
           <Button
             onClick={scrollToTop}
@@ -92,7 +80,6 @@ const Navigation = () => {
             fontSize="1.5rem"
             my={2}
             mr="auto"
-            zIndex={99}
             _hover={{ color: 'primary', bg: 'transparent' }}
             _active={{ bg: 'transparent' }}
           >
