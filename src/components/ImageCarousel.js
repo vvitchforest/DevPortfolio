@@ -9,16 +9,6 @@ const ImageCarousel = ({ images, alt }) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const [resetKey, setResetKey] = useState(0)
-  const [objectFits, setObjectFits] = useState({})
-
-  const handleImageLoad = useCallback((e, i) => {
-    const { naturalWidth, naturalHeight } = e.target
-    setObjectFits(prev => ({
-      ...prev,
-      [i]: naturalHeight > naturalWidth ? 'cover' : 'contain'
-    }))
-  }, [])
-
   const resetTimer = useCallback(() => setResetKey(k => k + 1), [])
 
   const next = useCallback(() => {
@@ -84,8 +74,7 @@ const ImageCarousel = ({ images, alt }) => {
           left={0}
           w="100%"
           h="100%"
-          objectFit={objectFits[i] ?? 'contain'}
-          onLoad={e => handleImageLoad(e, i)}
+          objectFit="contain"
           opacity={i === currentIndex ? 1 : 0}
           transition="opacity 0.4s ease-in-out"
           pointerEvents={i === currentIndex ? 'auto' : 'none'}
