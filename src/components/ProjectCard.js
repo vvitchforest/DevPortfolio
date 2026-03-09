@@ -29,10 +29,11 @@ const ProjectCard = ({ project, index }) => {
     ))
 
   const isCarousel = project.media.type === 'carousel'
+  const isFullBleed = isCarousel || project.media.type === 'image'
 
   const cardStyles = {
     my: { base: 0, lg: 3 },
-    py: isCarousel ? { base: 0, lg: 5 } : 5,
+    py: isFullBleed ? { base: 0, lg: 5 } : 5,
     boxShadow: 'none',
     bg: 'background',
     borderRadius: '0',
@@ -41,22 +42,16 @@ const ProjectCard = ({ project, index }) => {
   if (project.media.type === 'image') {
     mediaContent = (
       <Box
-        w={{ base: '100%', lg: '50%' }}
-        minH={
-          project.name.includes('My Restaurant')
-            ? { base: '100vh', md: '60vh', lg: '450px' }
-            : ['250px', '300px', '400px', 'auto']
-        }
-        mt={5}
+        w={{ base: '100vw', lg: '50%' }}
+        ml={{ base: 'calc(50% - 50vw)', lg: 0 }}
+        minH={{ base: project.media.portrait ? '100vh' : '65vw', md: '600px', lg: '650px', '2xl': '900px' }}
+        mt={{ base: 0, lg: 5 }}
         bgImage={{
           base: `url('${project.media.content.full}')`,
           lg: `url('${project.media.content.wide}')`,
         }}
-        bgSize={{
-          base: project.name.includes('My Restaurant') ? 'contain' : 'cover',
-          lg: 'contain',
-        }}
-        bgPosition={{ base: 'center', lg: 'top' }}
+        bgSize='contain'
+        bgPosition='center'
         bgRepeat='no-repeat'
         boxSizing='border-box'
       >
@@ -71,7 +66,7 @@ const ProjectCard = ({ project, index }) => {
       <Box
         w={{ base: '100vw', lg: '50%' }}
         ml={{ base: 'calc(50% - 50vw)', lg: 0 }}
-        h={{ base: '100vh', md: '60vh', lg: '450px' }}
+        h={{ base: '100vh', md: '600px', lg: '650px', '2xl': '900px' }}
         mt={{ base: 0, lg: 5 }}
         position='relative'
       >
@@ -96,7 +91,7 @@ const ProjectCard = ({ project, index }) => {
   return (
     <Card
       variant='filled'
-      overflow={{ base: isCarousel ? 'visible' : 'hidden', lg: 'hidden' }}
+      overflow={{ base: isFullBleed ? 'visible' : 'hidden', lg: 'hidden' }}
       direction={{
         base: 'column-reverse',
         lg: index % 2 === 0 ? 'row' : 'row-reverse',

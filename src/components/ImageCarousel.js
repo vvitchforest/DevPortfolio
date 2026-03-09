@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { Box, Image, IconButton, HStack } from '@chakra-ui/react'
+import { Box, Image, IconButton, HStack, Flex } from '@chakra-ui/react'
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs'
 
 const INTERVAL = 5000
@@ -84,21 +84,34 @@ const ImageCarousel = ({ images, alt }) => {
         />
       ))}
 
-      <IconButton
-        aria-label='Previous image'
-        icon={<BsChevronLeft />}
-        onClick={prev}
-        left={2}
-        {...arrowStyles}
-      />
-
-      <IconButton
-        aria-label='Next image'
-        icon={<BsChevronRight />}
-        onClick={manualNext}
-        right={2}
-        {...arrowStyles}
-      />
+      <Flex
+        position='absolute'
+        top='50%'
+        left='50%'
+        transform='translate(-50%, -50%)'
+        w='100%'
+        maxW='420px'
+        justify='space-between'
+        px={2}
+        zIndex={2}
+      >
+        <IconButton
+          aria-label='Previous image'
+          icon={<BsChevronLeft />}
+          onClick={prev}
+          {...arrowStyles}
+          position='static'
+          transform='none'
+        />
+        <IconButton
+          aria-label='Next image'
+          icon={<BsChevronRight />}
+          onClick={manualNext}
+          {...arrowStyles}
+          position='static'
+          transform='none'
+        />
+      </Flex>
 
       <HStack
         position='absolute'
